@@ -19,6 +19,8 @@ function redirectToAppStore() {
     window.location = 'https://apps.apple.com/us/app/roon-remote/id1014764083'; // Replace with your iOS app's App Store URL
   } else {
     // User is on another platform
+    // Not possible to detect whether or not the app was installed and opened, so on Desktop, we will always show this alert even if they opened the app successfully
+    alert('You are not on an Android or iOS device, so we cannot take you to the app store')
     window.location = 'https://roon.app/en/';
   }
 }
