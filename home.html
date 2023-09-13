@@ -2,27 +2,35 @@
 <html>
 <head>
 <script>
-function myFunction() {
-  var app = {
-    launchApp: function() {
-      window.location = "roon://";
-      this.timer = setTimeout(this.openWebApp, 25);
-    },
 
-    openWebApp: function() {
-      window.location = "https://apps.apple.com/us/app/roon-remote/id1014764083";
-    }
-  };
-
-  app.launchApp();
+function go() {
+  window.location = "roon://";
+  this.timer = setTimeout(redirectToAppStore, 25);
 }
+
+function redirectToAppStore() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  if (/android/i.test(userAgent)) {
+    // User is using an Android device
+    window.location = 'https://play.google.com/store/apps/details?id=com.roon.mobile'; // Replace with your Android app's Play Store URL
+  } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
+    // User is using an iOS device
+    window.location = 'https://apps.apple.com/us/app/roon-remote/id1014764083'; // Replace with your iOS app's App Store URL
+  } else {
+    // User is on another platform
+    alert('Sorry, your device is not supported.');
+  }
+}
+
+
 </script>
 </head>
 <body>
 <h2>Demo Redirecting</h2>
 
-<p>Try to open the Roon app, and if it fails to redirect the user on mobile to the app store if they're still in the browser</p>
-<button type="button" onclick="myFunction()">Try it</button>
+<p>Try to open the Roon app, and if the app is not installed, it will redirect the user on mobile to the app store</p>
+<button type="button" onclick="go()">Try it</button>
 
 </body>
 </html>
