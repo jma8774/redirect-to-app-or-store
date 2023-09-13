@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction() {
+  var app = {
+    launchApp: function() {
+      window.location = "roon://";
+      this.timer = setTimeout(this.openWebApp, 25);
+    },
+
+    openWebApp: function() {
+      window.location = "https://www.google.com/";
+    }
+  };
+
+  app.launchApp();
+}
+</script>
+</head>
+<body>
+<h2>Demo Redirecting</h2>
+
+<p>Try to open the Roon app, and then wait 1 second to redirect the user on mobile to the app store if they're still in the browser</p>
+<button type="button" onclick="myFunction()">Try it</button>
+
+</body>
+</html>
