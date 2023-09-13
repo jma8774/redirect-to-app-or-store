@@ -6,7 +6,7 @@
 
   function openRoon() {
     window.location.href = "roon://";
-    this.timer = setTimeout(redirectToAppStore, 25);
+    this.timer = setTimeout(redirectToAppStore, 400);
   }
 
   function redirectToAppStore() {
@@ -24,7 +24,7 @@
   }
 
   function askToOpenAppStore(url) {
-    if (document.hidden) {
+    if (!document.hidden) {
       if (confirm('The app is not installed. Would you like to go to the app store?')) {
         window.location.href = url;
       }
